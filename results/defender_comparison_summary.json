@@ -1,0 +1,1390 @@
+{
+  "config": {
+    "attackers": [
+      "greedy",
+      "oracle",
+      "random",
+      "gnn_ppo",
+      "ppo"
+    ],
+    "modes": {
+      "off": "off",
+      "rule": "rule",
+      "learned_v6": "learned:models\\learned_defender_v6_alerts.json"
+    },
+    "seed_start": 20000,
+    "seed_end": 20499,
+    "episodes_per_cell": 500,
+    "topology_family": "mixed",
+    "defender_budget": 5,
+    "defender_interval": 4,
+    "visibility": "alerts",
+    "patch_semantics": "strong",
+    "initial_access_alert": "potential_alert_v1",
+    "defender_semantics": "confirmed_compromise_v1",
+    "defender_first_response": "pre_action_step_0",
+    "attack_path_aware_patching": true,
+    "stochastic_attackers": true,
+    "max_steps": 120,
+    "stall_window": 20,
+    "compatibility_warnings": [],
+    "notes": [
+      "contained_by_defender requires the matched no-defender run to reach the objective.",
+      "containment_step = last step of attacker progress in verified contained episodes.",
+      "Pooled p-values reuse seeds across attackers; see sign_test_p_seed_clustered and prefer per-attacker results."
+    ]
+  },
+  "by_attacker": {
+    "greedy": {
+      "off": {
+        "episodes": 500,
+        "attacker_success_rate": 0.91,
+        "attacker_success_ci95": [
+          0.8817,
+          0.9321
+        ],
+        "paired_vs_off": null,
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 10.46,
+          "ci95_low": 9.9828,
+          "ci95_high": 10.9372
+        },
+        "steps": {
+          "n": 500,
+          "mean": 60.862,
+          "ci95_low": 57.7851,
+          "ci95_high": 63.9389
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 10.46,
+          "ci95_low": 9.9828,
+          "ci95_high": 10.9372
+        },
+        "first_defender_decision_step": {
+          "n": 0,
+          "mean": null,
+          "ci95_low": null,
+          "ci95_high": null
+        },
+        "containment_step": {
+          "n": 0,
+          "mean": null,
+          "ci95_low": null,
+          "ci95_high": null
+        },
+        "stall_rate": 0.0,
+        "containment_rate": 0.0,
+        "outcomes": {
+          "objective_reached": 455,
+          "time_limit": 45
+        }
+      },
+      "rule": {
+        "episodes": 500,
+        "attacker_success_rate": 0.03,
+        "attacker_success_ci95": [
+          0.0183,
+          0.0489
+        ],
+        "paired_vs_off": {
+          "prevented": 440,
+          "harmed": 0,
+          "prevention_rate": 0.88,
+          "prevention_ci95": [
+            0.8486,
+            0.9056
+          ],
+          "sign_test_p": 0.0,
+          "sign_test_p_seed_clustered": 0.0,
+          "mean_compromised_change": {
+            "n": 500,
+            "mean": -8.586,
+            "ci95_low": -9.0899,
+            "ci95_high": -8.0821
+          }
+        },
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 1.874,
+          "ci95_low": 1.6824,
+          "ci95_high": 2.0656
+        },
+        "steps": {
+          "n": 500,
+          "mean": 7.458,
+          "ci95_low": 6.4427,
+          "ci95_high": 8.4733
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 2.522,
+          "ci95_low": 2.4477,
+          "ci95_high": 2.5963
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 2.522,
+          "ci95_low": 2.4477,
+          "ci95_high": 2.5963
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 1.874,
+          "ci95_low": 1.6824,
+          "ci95_high": 2.0656
+        },
+        "first_defender_decision_step": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "containment_step": {
+          "n": 440,
+          "mean": 5.4614,
+          "ci95_low": 4.6654,
+          "ci95_high": 6.2574
+        },
+        "stall_rate": 0.966,
+        "containment_rate": 0.88,
+        "outcomes": {
+          "attacker_stalled": 45,
+          "contained_by_defender": 440,
+          "objective_reached": 15
+        }
+      },
+      "learned_v6": {
+        "episodes": 500,
+        "attacker_success_rate": 0.028,
+        "attacker_success_ci95": [
+          0.0168,
+          0.0464
+        ],
+        "paired_vs_off": {
+          "prevented": 442,
+          "harmed": 1,
+          "prevention_rate": 0.884,
+          "prevention_ci95": [
+            0.853,
+            0.9092
+          ],
+          "sign_test_p": 0.0,
+          "sign_test_p_seed_clustered": 0.0,
+          "mean_compromised_change": {
+            "n": 500,
+            "mean": -8.73,
+            "ci95_low": -9.2265,
+            "ci95_high": -8.2335
+          }
+        },
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 1.73,
+          "ci95_low": 1.5594,
+          "ci95_high": 1.9006
+        },
+        "steps": {
+          "n": 500,
+          "mean": 6.774,
+          "ci95_low": 5.9025,
+          "ci95_high": 7.6455
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 2.136,
+          "ci95_low": 2.0501,
+          "ci95_high": 2.2219
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 2.136,
+          "ci95_low": 2.0501,
+          "ci95_high": 2.2219
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 1.73,
+          "ci95_low": 1.5594,
+          "ci95_high": 1.9006
+        },
+        "first_defender_decision_step": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "containment_step": {
+          "n": 442,
+          "mean": 5.1086,
+          "ci95_low": 4.4907,
+          "ci95_high": 5.7265
+        },
+        "stall_rate": 0.97,
+        "containment_rate": 0.884,
+        "outcomes": {
+          "attacker_stalled": 44,
+          "contained_by_defender": 442,
+          "objective_reached": 14
+        }
+      }
+    },
+    "oracle": {
+      "off": {
+        "episodes": 500,
+        "attacker_success_rate": 1.0,
+        "attacker_success_ci95": [
+          0.9924,
+          1.0
+        ],
+        "paired_vs_off": null,
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 3.654,
+          "ci95_low": 3.529,
+          "ci95_high": 3.779
+        },
+        "steps": {
+          "n": 500,
+          "mean": 15.452,
+          "ci95_low": 14.7279,
+          "ci95_high": 16.1761
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 3.654,
+          "ci95_low": 3.529,
+          "ci95_high": 3.779
+        },
+        "first_defender_decision_step": {
+          "n": 0,
+          "mean": null,
+          "ci95_low": null,
+          "ci95_high": null
+        },
+        "containment_step": {
+          "n": 0,
+          "mean": null,
+          "ci95_low": null,
+          "ci95_high": null
+        },
+        "stall_rate": 0.0,
+        "containment_rate": 0.0,
+        "outcomes": {
+          "objective_reached": 500
+        }
+      },
+      "rule": {
+        "episodes": 500,
+        "attacker_success_rate": 0.038,
+        "attacker_success_ci95": [
+          0.0245,
+          0.0586
+        ],
+        "paired_vs_off": {
+          "prevented": 481,
+          "harmed": 0,
+          "prevention_rate": 0.962,
+          "prevention_ci95": [
+            0.9414,
+            0.9755
+          ],
+          "sign_test_p": 0.0,
+          "sign_test_p_seed_clustered": 0.0,
+          "mean_compromised_change": {
+            "n": 500,
+            "mean": -1.536,
+            "ci95_low": -1.7854,
+            "ci95_high": -1.2866
+          }
+        },
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 2.118,
+          "ci95_low": 1.9055,
+          "ci95_high": 2.3305
+        },
+        "steps": {
+          "n": 500,
+          "mean": 8.462,
+          "ci95_low": 7.3544,
+          "ci95_high": 9.5696
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 2.622,
+          "ci95_low": 2.5352,
+          "ci95_high": 2.7088
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 2.622,
+          "ci95_low": 2.5352,
+          "ci95_high": 2.7088
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 2.118,
+          "ci95_low": 1.9055,
+          "ci95_high": 2.3305
+        },
+        "first_defender_decision_step": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "containment_step": {
+          "n": 481,
+          "mean": 6.3451,
+          "ci95_low": 5.3775,
+          "ci95_high": 7.3128
+        },
+        "stall_rate": 0.96,
+        "containment_rate": 0.962,
+        "outcomes": {
+          "contained_by_defender": 481,
+          "objective_reached": 19
+        }
+      },
+      "learned_v6": {
+        "episodes": 500,
+        "attacker_success_rate": 0.028,
+        "attacker_success_ci95": [
+          0.0168,
+          0.0464
+        ],
+        "paired_vs_off": {
+          "prevented": 486,
+          "harmed": 0,
+          "prevention_rate": 0.972,
+          "prevention_ci95": [
+            0.9536,
+            0.9832
+          ],
+          "sign_test_p": 0.0,
+          "sign_test_p_seed_clustered": 0.0,
+          "mean_compromised_change": {
+            "n": 500,
+            "mean": -1.74,
+            "ci95_low": -1.9716,
+            "ci95_high": -1.5084
+          }
+        },
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 1.914,
+          "ci95_low": 1.7289,
+          "ci95_high": 2.0991
+        },
+        "steps": {
+          "n": 500,
+          "mean": 7.468,
+          "ci95_low": 6.5684,
+          "ci95_high": 8.3676
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 2.236,
+          "ci95_low": 2.1428,
+          "ci95_high": 2.3292
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 2.236,
+          "ci95_low": 2.1428,
+          "ci95_high": 2.3292
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 1.914,
+          "ci95_low": 1.7289,
+          "ci95_high": 2.0991
+        },
+        "first_defender_decision_step": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "containment_step": {
+          "n": 486,
+          "mean": 5.6461,
+          "ci95_low": 4.9356,
+          "ci95_high": 6.3566
+        },
+        "stall_rate": 0.972,
+        "containment_rate": 0.972,
+        "outcomes": {
+          "contained_by_defender": 486,
+          "objective_reached": 14
+        }
+      }
+    },
+    "random": {
+      "off": {
+        "episodes": 500,
+        "attacker_success_rate": 0.94,
+        "attacker_success_ci95": [
+          0.9156,
+          0.9577
+        ],
+        "paired_vs_off": null,
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 14.7,
+          "ci95_low": 14.1218,
+          "ci95_high": 15.2782
+        },
+        "steps": {
+          "n": 500,
+          "mean": 64.774,
+          "ci95_low": 62.0953,
+          "ci95_high": 67.4527
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 14.7,
+          "ci95_low": 14.1218,
+          "ci95_high": 15.2782
+        },
+        "first_defender_decision_step": {
+          "n": 0,
+          "mean": null,
+          "ci95_low": null,
+          "ci95_high": null
+        },
+        "containment_step": {
+          "n": 0,
+          "mean": null,
+          "ci95_low": null,
+          "ci95_high": null
+        },
+        "stall_rate": 0.0,
+        "containment_rate": 0.0,
+        "outcomes": {
+          "objective_reached": 470,
+          "time_limit": 30
+        }
+      },
+      "rule": {
+        "episodes": 500,
+        "attacker_success_rate": 0.04,
+        "attacker_success_ci95": [
+          0.026,
+          0.061
+        ],
+        "paired_vs_off": {
+          "prevented": 451,
+          "harmed": 1,
+          "prevention_rate": 0.902,
+          "prevention_ci95": [
+            0.8728,
+            0.9251
+          ],
+          "sign_test_p": 0.0,
+          "sign_test_p_seed_clustered": 0.0,
+          "mean_compromised_change": {
+            "n": 500,
+            "mean": -12.046,
+            "ci95_low": -12.6817,
+            "ci95_high": -11.4103
+          }
+        },
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 2.654,
+          "ci95_low": 2.3664,
+          "ci95_high": 2.9416
+        },
+        "steps": {
+          "n": 500,
+          "mean": 9.942,
+          "ci95_low": 8.7366,
+          "ci95_high": 11.1474
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 2.852,
+          "ci95_low": 2.7577,
+          "ci95_high": 2.9463
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 2.852,
+          "ci95_low": 2.7577,
+          "ci95_high": 2.9463
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 2.654,
+          "ci95_low": 2.3664,
+          "ci95_high": 2.9416
+        },
+        "first_defender_decision_step": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "containment_step": {
+          "n": 451,
+          "mean": 7.8271,
+          "ci95_low": 6.863,
+          "ci95_high": 8.7911
+        },
+        "stall_rate": 0.96,
+        "containment_rate": 0.902,
+        "outcomes": {
+          "attacker_stalled": 29,
+          "contained_by_defender": 451,
+          "objective_reached": 20
+        }
+      },
+      "learned_v6": {
+        "episodes": 500,
+        "attacker_success_rate": 0.036,
+        "attacker_success_ci95": [
+          0.0229,
+          0.0562
+        ],
+        "paired_vs_off": {
+          "prevented": 453,
+          "harmed": 1,
+          "prevention_rate": 0.906,
+          "prevention_ci95": [
+            0.8772,
+            0.9286
+          ],
+          "sign_test_p": 0.0,
+          "sign_test_p_seed_clustered": 0.0,
+          "mean_compromised_change": {
+            "n": 500,
+            "mean": -12.228,
+            "ci95_low": -12.8664,
+            "ci95_high": -11.5896
+          }
+        },
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 2.472,
+          "ci95_low": 2.1983,
+          "ci95_high": 2.7457
+        },
+        "steps": {
+          "n": 500,
+          "mean": 9.206,
+          "ci95_low": 8.096,
+          "ci95_high": 10.316
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 2.49,
+          "ci95_low": 2.3881,
+          "ci95_high": 2.5919
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 2.49,
+          "ci95_low": 2.3881,
+          "ci95_high": 2.5919
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 2.472,
+          "ci95_low": 2.1983,
+          "ci95_high": 2.7457
+        },
+        "first_defender_decision_step": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "containment_step": {
+          "n": 453,
+          "mean": 6.9272,
+          "ci95_low": 6.1758,
+          "ci95_high": 7.6785
+        },
+        "stall_rate": 0.964,
+        "containment_rate": 0.906,
+        "outcomes": {
+          "attacker_stalled": 29,
+          "contained_by_defender": 453,
+          "objective_reached": 18
+        }
+      }
+    },
+    "gnn_ppo": {
+      "off": {
+        "episodes": 500,
+        "attacker_success_rate": 0.954,
+        "attacker_success_ci95": [
+          0.9319,
+          0.9692
+        ],
+        "paired_vs_off": null,
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 18.22,
+          "ci95_low": 17.6757,
+          "ci95_high": 18.7643
+        },
+        "steps": {
+          "n": 500,
+          "mean": 71.41,
+          "ci95_low": 69.0985,
+          "ci95_high": 73.7215
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 18.22,
+          "ci95_low": 17.6757,
+          "ci95_high": 18.7643
+        },
+        "first_defender_decision_step": {
+          "n": 0,
+          "mean": null,
+          "ci95_low": null,
+          "ci95_high": null
+        },
+        "containment_step": {
+          "n": 0,
+          "mean": null,
+          "ci95_low": null,
+          "ci95_high": null
+        },
+        "stall_rate": 0.0,
+        "containment_rate": 0.0,
+        "outcomes": {
+          "objective_reached": 477,
+          "time_limit": 23
+        }
+      },
+      "rule": {
+        "episodes": 500,
+        "attacker_success_rate": 0.094,
+        "attacker_success_ci95": [
+          0.0714,
+          0.1228
+        ],
+        "paired_vs_off": {
+          "prevented": 433,
+          "harmed": 3,
+          "prevention_rate": 0.866,
+          "prevention_ci95": [
+            0.8333,
+            0.8931
+          ],
+          "sign_test_p": 0.0,
+          "sign_test_p_seed_clustered": 0.0,
+          "mean_compromised_change": {
+            "n": 500,
+            "mean": -13.75,
+            "ci95_low": -14.4132,
+            "ci95_high": -13.0868
+          }
+        },
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 4.47,
+          "ci95_low": 3.9826,
+          "ci95_high": 4.9574
+        },
+        "steps": {
+          "n": 500,
+          "mean": 16.42,
+          "ci95_low": 14.476,
+          "ci95_high": 18.364
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 3.2,
+          "ci95_low": 3.0906,
+          "ci95_high": 3.3094
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 3.2,
+          "ci95_low": 3.0906,
+          "ci95_high": 3.3094
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 4.47,
+          "ci95_low": 3.9826,
+          "ci95_high": 4.9574
+        },
+        "first_defender_decision_step": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "containment_step": {
+          "n": 433,
+          "mean": 10.3626,
+          "ci95_low": 9.0944,
+          "ci95_high": 11.6308
+        },
+        "stall_rate": 0.904,
+        "containment_rate": 0.866,
+        "outcomes": {
+          "attacker_stalled": 19,
+          "contained_by_defender": 433,
+          "objective_reached": 47,
+          "time_limit": 1
+        }
+      },
+      "learned_v6": {
+        "episodes": 500,
+        "attacker_success_rate": 0.096,
+        "attacker_success_ci95": [
+          0.0732,
+          0.125
+        ],
+        "paired_vs_off": {
+          "prevented": 431,
+          "harmed": 2,
+          "prevention_rate": 0.862,
+          "prevention_ci95": [
+            0.829,
+            0.8895
+          ],
+          "sign_test_p": 0.0,
+          "sign_test_p_seed_clustered": 0.0,
+          "mean_compromised_change": {
+            "n": 500,
+            "mean": -14.112,
+            "ci95_low": -14.7911,
+            "ci95_high": -13.4329
+          }
+        },
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 4.108,
+          "ci95_low": 3.6376,
+          "ci95_high": 4.5784
+        },
+        "steps": {
+          "n": 500,
+          "mean": 14.856,
+          "ci95_low": 13.0116,
+          "ci95_high": 16.7004
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 2.812,
+          "ci95_low": 2.6872,
+          "ci95_high": 2.9368
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 2.812,
+          "ci95_low": 2.6872,
+          "ci95_high": 2.9368
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 4.108,
+          "ci95_low": 3.6376,
+          "ci95_high": 4.5784
+        },
+        "first_defender_decision_step": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "containment_step": {
+          "n": 431,
+          "mean": 9.1879,
+          "ci95_low": 7.9885,
+          "ci95_high": 10.3874
+        },
+        "stall_rate": 0.9,
+        "containment_rate": 0.862,
+        "outcomes": {
+          "attacker_stalled": 21,
+          "contained_by_defender": 431,
+          "objective_reached": 48
+        }
+      }
+    },
+    "ppo": {
+      "off": {
+        "episodes": 500,
+        "attacker_success_rate": 0.968,
+        "attacker_success_ci95": [
+          0.9487,
+          0.9802
+        ],
+        "paired_vs_off": null,
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 16.602,
+          "ci95_low": 16.0835,
+          "ci95_high": 17.1205
+        },
+        "steps": {
+          "n": 500,
+          "mean": 66.338,
+          "ci95_low": 63.9576,
+          "ci95_high": 68.7184
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 16.602,
+          "ci95_low": 16.0835,
+          "ci95_high": 17.1205
+        },
+        "first_defender_decision_step": {
+          "n": 0,
+          "mean": null,
+          "ci95_low": null,
+          "ci95_high": null
+        },
+        "containment_step": {
+          "n": 0,
+          "mean": null,
+          "ci95_low": null,
+          "ci95_high": null
+        },
+        "stall_rate": 0.0,
+        "containment_rate": 0.0,
+        "outcomes": {
+          "objective_reached": 484,
+          "time_limit": 16
+        }
+      },
+      "rule": {
+        "episodes": 500,
+        "attacker_success_rate": 0.166,
+        "attacker_success_ci95": [
+          0.136,
+          0.2011
+        ],
+        "paired_vs_off": {
+          "prevented": 403,
+          "harmed": 2,
+          "prevention_rate": 0.806,
+          "prevention_ci95": [
+            0.7691,
+            0.8383
+          ],
+          "sign_test_p": 0.0,
+          "sign_test_p_seed_clustered": 0.0,
+          "mean_compromised_change": {
+            "n": 500,
+            "mean": -9.794,
+            "ci95_low": -10.508,
+            "ci95_high": -9.08
+          }
+        },
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 6.808,
+          "ci95_low": 6.2306,
+          "ci95_high": 7.3854
+        },
+        "steps": {
+          "n": 500,
+          "mean": 25.48,
+          "ci95_low": 23.0217,
+          "ci95_high": 27.9383
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 3.81,
+          "ci95_low": 3.7041,
+          "ci95_high": 3.9159
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 3.81,
+          "ci95_low": 3.7041,
+          "ci95_high": 3.9159
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 6.808,
+          "ci95_low": 6.2306,
+          "ci95_high": 7.3854
+        },
+        "first_defender_decision_step": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "containment_step": {
+          "n": 403,
+          "mean": 17.5161,
+          "ci95_low": 15.3882,
+          "ci95_high": 19.6441
+        },
+        "stall_rate": 0.828,
+        "containment_rate": 0.806,
+        "outcomes": {
+          "attacker_stalled": 14,
+          "contained_by_defender": 403,
+          "objective_reached": 83
+        }
+      },
+      "learned_v6": {
+        "episodes": 500,
+        "attacker_success_rate": 0.18,
+        "attacker_success_ci95": [
+          0.1488,
+          0.2161
+        ],
+        "paired_vs_off": {
+          "prevented": 395,
+          "harmed": 1,
+          "prevention_rate": 0.79,
+          "prevention_ci95": [
+            0.7522,
+            0.8234
+          ],
+          "sign_test_p": 0.0,
+          "sign_test_p_seed_clustered": 0.0,
+          "mean_compromised_change": {
+            "n": 500,
+            "mean": -10.236,
+            "ci95_low": -10.9603,
+            "ci95_high": -9.5117
+          }
+        },
+        "compromised_hosts": {
+          "n": 500,
+          "mean": 6.366,
+          "ci95_low": 5.7885,
+          "ci95_high": 6.9435
+        },
+        "steps": {
+          "n": 500,
+          "mean": 23.43,
+          "ci95_low": 21.0612,
+          "ci95_high": 25.7988
+        },
+        "interventions": {
+          "n": 500,
+          "mean": 3.454,
+          "ci95_low": 3.3261,
+          "ci95_high": 3.5819
+        },
+        "budget_spent": {
+          "n": 500,
+          "mean": 3.454,
+          "ci95_low": 3.3261,
+          "ci95_high": 3.5819
+        },
+        "time_to_detection": {
+          "n": 500,
+          "mean": 1.0,
+          "ci95_low": 1.0,
+          "ci95_high": 1.0
+        },
+        "confirmed_compromises": {
+          "n": 500,
+          "mean": 6.366,
+          "ci95_low": 5.7885,
+          "ci95_high": 6.9435
+        },
+        "first_defender_decision_step": {
+          "n": 500,
+          "mean": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "containment_step": {
+          "n": 395,
+          "mean": 15.1291,
+          "ci95_low": 13.0606,
+          "ci95_high": 17.1976
+        },
+        "stall_rate": 0.808,
+        "containment_rate": 0.79,
+        "outcomes": {
+          "attacker_stalled": 14,
+          "contained_by_defender": 395,
+          "objective_reached": 90,
+          "time_limit": 1
+        }
+      }
+    }
+  },
+  "pooled": {
+    "off": {
+      "episodes": 2500,
+      "attacker_success_rate": 0.9544,
+      "attacker_success_ci95": [
+        0.9455,
+        0.9619
+      ],
+      "paired_vs_off": null,
+      "compromised_hosts": {
+        "n": 2500,
+        "mean": 12.7272,
+        "ci95_low": 12.4312,
+        "ci95_high": 13.0232
+      },
+      "steps": {
+        "n": 2500,
+        "mean": 55.7672,
+        "ci95_low": 54.4377,
+        "ci95_high": 57.0967
+      },
+      "interventions": {
+        "n": 2500,
+        "mean": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.0
+      },
+      "budget_spent": {
+        "n": 2500,
+        "mean": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.0
+      },
+      "time_to_detection": {
+        "n": 2500,
+        "mean": 1.0,
+        "ci95_low": 1.0,
+        "ci95_high": 1.0
+      },
+      "confirmed_compromises": {
+        "n": 2500,
+        "mean": 12.7272,
+        "ci95_low": 12.4312,
+        "ci95_high": 13.0232
+      },
+      "first_defender_decision_step": {
+        "n": 0,
+        "mean": null,
+        "ci95_low": null,
+        "ci95_high": null
+      },
+      "containment_step": {
+        "n": 0,
+        "mean": null,
+        "ci95_low": null,
+        "ci95_high": null
+      },
+      "stall_rate": 0.0,
+      "containment_rate": 0.0,
+      "outcomes": {
+        "objective_reached": 2386,
+        "time_limit": 114
+      }
+    },
+    "rule": {
+      "episodes": 2500,
+      "attacker_success_rate": 0.0736,
+      "attacker_success_ci95": [
+        0.064,
+        0.0845
+      ],
+      "paired_vs_off": {
+        "prevented": 2208,
+        "harmed": 6,
+        "prevention_rate": 0.8832,
+        "prevention_ci95": [
+          0.87,
+          0.8952
+        ],
+        "sign_test_p": 0.0,
+        "sign_test_p_seed_clustered": 0.0,
+        "mean_compromised_change": {
+          "n": 2500,
+          "mean": -9.1424,
+          "ci95_low": -9.4487,
+          "ci95_high": -8.8361
+        }
+      },
+      "compromised_hosts": {
+        "n": 2500,
+        "mean": 3.5848,
+        "ci95_low": 3.3987,
+        "ci95_high": 3.7709
+      },
+      "steps": {
+        "n": 2500,
+        "mean": 13.5524,
+        "ci95_low": 12.7713,
+        "ci95_high": 14.3335
+      },
+      "interventions": {
+        "n": 2500,
+        "mean": 3.0012,
+        "ci95_low": 2.955,
+        "ci95_high": 3.0474
+      },
+      "budget_spent": {
+        "n": 2500,
+        "mean": 3.0012,
+        "ci95_low": 2.955,
+        "ci95_high": 3.0474
+      },
+      "time_to_detection": {
+        "n": 2500,
+        "mean": 1.0,
+        "ci95_low": 1.0,
+        "ci95_high": 1.0
+      },
+      "confirmed_compromises": {
+        "n": 2500,
+        "mean": 3.5848,
+        "ci95_low": 3.3987,
+        "ci95_high": 3.7709
+      },
+      "first_defender_decision_step": {
+        "n": 2500,
+        "mean": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.0
+      },
+      "containment_step": {
+        "n": 2208,
+        "mean": 9.2985,
+        "ci95_low": 8.7056,
+        "ci95_high": 9.8913
+      },
+      "stall_rate": 0.9236,
+      "containment_rate": 0.8832,
+      "outcomes": {
+        "attacker_stalled": 107,
+        "contained_by_defender": 2208,
+        "objective_reached": 184,
+        "time_limit": 1
+      }
+    },
+    "learned_v6": {
+      "episodes": 2500,
+      "attacker_success_rate": 0.0736,
+      "attacker_success_ci95": [
+        0.064,
+        0.0845
+      ],
+      "paired_vs_off": {
+        "prevented": 2207,
+        "harmed": 5,
+        "prevention_rate": 0.8828,
+        "prevention_ci95": [
+          0.8696,
+          0.8948
+        ],
+        "sign_test_p": 0.0,
+        "sign_test_p_seed_clustered": 0.0,
+        "mean_compromised_change": {
+          "n": 2500,
+          "mean": -9.4092,
+          "ci95_low": -9.7179,
+          "ci95_high": -9.1005
+        }
+      },
+      "compromised_hosts": {
+        "n": 2500,
+        "mean": 3.318,
+        "ci95_low": 3.1382,
+        "ci95_high": 3.4978
+      },
+      "steps": {
+        "n": 2500,
+        "mean": 12.3468,
+        "ci95_low": 11.6178,
+        "ci95_high": 13.0758
+      },
+      "interventions": {
+        "n": 2500,
+        "mean": 2.6256,
+        "ci95_low": 2.5738,
+        "ci95_high": 2.6774
+      },
+      "budget_spent": {
+        "n": 2500,
+        "mean": 2.6256,
+        "ci95_low": 2.5738,
+        "ci95_high": 2.6774
+      },
+      "time_to_detection": {
+        "n": 2500,
+        "mean": 1.0,
+        "ci95_low": 1.0,
+        "ci95_high": 1.0
+      },
+      "confirmed_compromises": {
+        "n": 2500,
+        "mean": 3.318,
+        "ci95_low": 3.1382,
+        "ci95_high": 3.4978
+      },
+      "first_defender_decision_step": {
+        "n": 2500,
+        "mean": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.0
+      },
+      "containment_step": {
+        "n": 2207,
+        "mean": 8.1903,
+        "ci95_low": 7.6643,
+        "ci95_high": 8.7163
+      },
+      "stall_rate": 0.9228,
+      "containment_rate": 0.8828,
+      "outcomes": {
+        "attacker_stalled": 108,
+        "contained_by_defender": 2207,
+        "objective_reached": 184,
+        "time_limit": 1
+      }
+    }
+  }
+}

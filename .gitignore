@@ -1,0 +1,59 @@
+
+# Python
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Frontend
+node_modules/
+frontend/dist/
+frontend/node_modules/
+npm-debug.log*
+
+# IDE and operating system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary and backup files
+*.bak
+*.backup*
+*~
+
+# Local patch experiments
+patch/
+
+# Model checkpoints: publish only the checkpoints used by the current runtime
+models/*
+!models/learned_defender_v6_alerts.json
+!models/ppo_mixed_30k.zip
+!models/gnn_ppo_mixed_30k.zip
+
+# Results: publish only the final v6 training and evaluation data
+results/*
+!results/learned_defender_v6_training.csv
+!results/learned_defender_v6_training_summary.json
+!results/defender_comparison.csv
+!results/defender_comparison_summary.json
+!results/figures/
+results/figures/*
+!results/figures/*.png
+!results/figures/*.jpg
+!results/figures/*.jpeg
+
+# Historical source backups
+cyberarena/api_phase1_backup.py

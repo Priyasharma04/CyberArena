@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cyberarena"
+version = "0.1.0"
+description = "Safe graph-based RL research simulator for autonomous attack-path discovery and adaptive defense"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "numpy==1.26.4",
+  "networkx==3.4.2",
+  "gymnasium==1.1.1",
+  "pydantic==2.10.6",
+  "fastapi==0.115.8",
+  "uvicorn[standard]==0.34.0",
+  "reportlab==4.3.1",
+  "pandas==2.2.3",
+  "matplotlib==3.10.0"
+]
+
+[project.optional-dependencies]
+rl = ["torch==2.6.0", "stable-baselines3==2.6.0", "sb3-contrib==2.6.0"]
+dev = ["pytest==8.3.4", "ruff==0.9.6", "httpx==0.28.1"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cyberarena*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

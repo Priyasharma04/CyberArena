@@ -1,0 +1,36 @@
+{
+  "episodes": 6000,
+  "seed_start": 10000,
+  "seed_end": 15999,
+  "attackers": [
+    "greedy",
+    "oracle",
+    "random",
+    "gnn_ppo",
+    "ppo"
+  ],
+  "topology_family": "mixed",
+  "budget": 5,
+  "interval": 4,
+  "visibility": "alerts",
+  "state_version": 6,
+  "patch_semantics": "strong",
+  "defender_semantics": "confirmed_compromise_v1",
+  "initial_access_alert": "potential_alert_v1",
+  "pre_action_response": true,
+  "attack_path_aware_patching": true,
+  "reward": {
+    "per_new_compromise": -0.3,
+    "per_intervention": -0.1,
+    "crown_jewel_lost": -10.0,
+    "prevented_objective": 6.0,
+    "final_compromise_fraction": -4.0
+  },
+  "q_table_states": 216,
+  "final_epsilon": 0.05,
+  "last_20pct_attacker_success": 0.08166666666666667,
+  "last_20pct_mean_compromised": 3.535,
+  "last_20pct_mean_interventions": 2.7641666666666667,
+  "checkpoint": "models/learned_defender_v6_alerts.json",
+  "training_csv": "results\\learned_defender_v6_training.csv"
+}
